@@ -54,20 +54,20 @@ namespace Grafico_a_Partir_de_CSV_By_orlando_Dias
                 Grafico.Titles.Clear();
 
                 // Ler arquivo .CSV
-                using (var reader = new StreamReader(DlgoCSV.FileName))
+                using (var Leitura = new StreamReader(DlgoCSV.FileName))
                 {
 
                     // ler primeira linha - ignora-la
-                    if (!reader.EndOfStream)
+                    if (!Leitura.EndOfStream)
                     {
-                        reader.ReadLine();
-                        reader.ReadLine();
+                        Leitura.ReadLine();
+                        Leitura.ReadLine();
                     }
 
-                    while (!reader.EndOfStream)
+                    while (!Leitura.EndOfStream)
                     {
                         // ler linha
-                        var Linha = reader.ReadLine();
+                        var Linha = Leitura.ReadLine();
 
                         // obter valores na linha
                         var Valores = Linha.Split('	');
@@ -82,11 +82,9 @@ namespace Grafico_a_Partir_de_CSV_By_orlando_Dias
 
                         var Serie = new System.Windows.Forms.DataVisualization.Charting.Series
                         {
-                            // Name = "Leitura " + i.ToString(), //date.ToString("dd-MM-yyyy HH:mm:ss"),
-                            //Color = working ? Color.Red : Color.Green,
 
                             Color = Cor,
-                            Label = valor + "°C" + " (duração: " + duracao.ToString("0.00") + ")",
+                            Label = valor + "°C" + " (tempo: " + duracao.ToString("0.00") + ")",
                             LabelForeColor = Color.Black,
                             BorderColor = Cor,
                             ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Bar,
